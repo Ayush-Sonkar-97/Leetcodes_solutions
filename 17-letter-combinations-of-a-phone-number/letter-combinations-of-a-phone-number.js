@@ -11,14 +11,16 @@ var letterCombinations = function(digits) {
 
     const output = []
 
-    const backtrack = (combination, new_digit, phone_map, output) => {
-        if(new_digit.length === 0) {
+    const backtrack = (combination, next_digit, phone_map, output) => {
+        if(next_digit.length === 0) {
             output.push(combination)
+            // console.log(output)
         }
         else {
-            const letters = phone_map[new_digit[0] - '2']
+            const new_digit = next_digit[0] - '2'
+            const letters = phone_map[new_digit]
             for(let i = 0; i < letters.length; i++) {
-                backtrack(combination + letters[i], new_digit.slice(1), phone_map, output)
+                backtrack(combination + letters[i], next_digit.slice(1), phone_map, output)
             }
         }
     }
