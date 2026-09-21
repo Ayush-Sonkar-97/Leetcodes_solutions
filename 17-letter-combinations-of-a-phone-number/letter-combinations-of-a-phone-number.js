@@ -3,30 +3,34 @@
  * @return {string[]}
  */
 var letterCombinations = function(digits) {
-    const len = digits.length
-
-    if(len === 0) return []
-
-    const phone_map = ["abc", "def", "ghi", 'jkl', "mno", "pqrs", "tuv", "wxyz"];
-
-    const output = []
-
-    const backtrack = (combination, next_digit, phone_map, output) => {
-        if(next_digit.length === 0) {
-            output.push(combination)
-            // console.log(output)
-        }
-        else {
-            const new_digit = next_digit[0] - '2'
-            const letters = phone_map[new_digit]
-            for(let i = 0; i < letters.length; i++) {
-                backtrack(combination + letters[i], next_digit.slice(1), phone_map, output)
-            }
-        }
+    const pm = {
+        '2': 'abc',
+        '3': 'def',
+        '4': 'ghi',
+        '5': 'jkl',
+        '6': 'mno',
+        '7': 'pqrs',
+        '8': 'tuv',
+        '9': 'wxyz',
     }
 
-    backtrack("", digits, phone_map, output)
+    let com = ['']
 
-    return output
+    for(let i = 0; i< digits.length; i++) {
+        const new_com = []
+        const digit = digits[i]
 
+        for(let j = 0; j < com.length; j++) {
+            
+            const combination = pm[digit]
+
+            for(let k = 0; k < combination.length; k++) {
+
+                new_com.push(com[j] + combination[k])
+            }
+        }
+        com = new_com
+    }
+
+    return com
 }
