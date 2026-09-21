@@ -2,6 +2,8 @@
  * @param {string} digits
  * @return {string[]}
  */
+
+// Used iterations
 var letterCombinations = function(digits) {
     const pm = {
         '2': 'abc',
