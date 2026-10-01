@@ -11,7 +11,8 @@ var isPalindrome = function (s) {
         }
     }
     // console.log(str)
-    let left = 0; right = str.length - 1
+    let left = 0 
+    let right = str.length - 1
     while(left < right) {
 
         if (str[left] !== str[right]) {
