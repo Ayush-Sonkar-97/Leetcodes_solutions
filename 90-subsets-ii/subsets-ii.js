@@ -6,9 +6,8 @@ var subsetsWithDup = function (nums) {
 
     nums.sort((a, b) => a - b)
     let res = [];
-    let subset = [];
 
-    let recursion = (start) => {
+    let recursion = (start, subset) => {
         res.push([...subset]);
 
         for (let i = start; i < nums.length; i++) {
@@ -16,12 +15,12 @@ var subsetsWithDup = function (nums) {
                 continue;
             }
             subset.push(nums[i]);
-            recursion(i + 1);
+            recursion(i + 1, subset);
             subset.pop();
         }
     }
 
-    recursion(0);
+    recursion(0, []);
 
     return res;
 };
