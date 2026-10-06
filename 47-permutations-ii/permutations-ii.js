@@ -5,7 +5,6 @@
 var permuteUnique = function(nums) {
     nums.sort((a,b) => a-b)
     let res = []
-    let i = 0
     let subset = []
 
     const backtrack = (subset, curr) => {
