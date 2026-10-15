@@ -20,7 +20,8 @@ var hasPathSum = function(root, targetSum) {
         return targetSum - root.val === 0;
     }
 
-    targetSum = targetSum - root.val
+    let left = hasPathSum(root.left, targetSum - root.val);
+    let right = hasPathSum(root.right, targetSum - root.val);
 
-    return hasPathSum(root.left, targetSum) || hasPathSum(root.right, targetSum)
+    return left || right
 };
